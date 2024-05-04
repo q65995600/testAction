@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest                    # job_id.runs-on
+    steps:
+      - uses: actions/checkout@v1             # 检出代码
+      - uses: actions/setup-node@v3
+        with: 
+          node-version: '14'
+      - run: npm install -g bats               # 执行命令
+      - run: bats -v
+      
+      
